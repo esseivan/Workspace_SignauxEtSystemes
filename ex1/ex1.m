@@ -36,6 +36,61 @@ xlim([-0.5 1.5]);
 %% 3.2. Signaux discrets, fonction principale
 clear; close all; clc;
 
+% 2)
 n = -5:5;
-imp = delta(n);
-n;
+delta = delta(n+1);
+stem(n, delta);
+xticks(n);
+xlabel('n');
+title('Signaux discrets');
+
+% 3)
+hold on;
+u = cumsum(delta);
+stem(n, u, 'r');
+
+% 4)
+hold on;
+r = cumsum(u);
+stem(n, r, 'g');
+legend('\delta[n+1]', 'u[n+1]', 'r[n+1]');
+
+
+%% 3.3. Signaux continus
+clear; close all; clc;
+
+% 1)
+resolution = 1e-3;
+
+% Saut unité
+syms t;
+u = heaviside(t - 0.5);
+t = -4:resolution:4;
+plot(t, eval(u))
+% syms definit un parametre symbolique, non defini
+% eval evalue la fonction en remplacant les parametres symboliques par leur
+%   valeur
+
+% 2)
+delta = diff(u);
+hold on;
+plot(t, eval(delta));
+% La valeur pour t = 0.5 n'est pas présente sur le graphe. Elle est infinie
+
+% 3)
+r = int(u)
+hold on;
+plot(t, eval(r));
+
+% Seul l'impulsion de dirac n'est pas continue, les deux autres oui
+
+
+
+
+
+
+
+
+
+
+
