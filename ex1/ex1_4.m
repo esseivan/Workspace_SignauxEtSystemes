@@ -2,7 +2,7 @@
 clear; close all; clc;
 
 A = 4;
-sigma = -10;
+sigma = -100;
 f = 200;
 omega = 2*pi*f;
 resolution = 100e-6;

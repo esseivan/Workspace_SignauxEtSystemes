@@ -10,7 +10,7 @@ t = -1:resolution:1;
 x1 = 5*cos(2*pi*f*t);
 x2 = 4*exp(-t/tau).*cos(2*pi*f*t);
 
-%% Plot
+% Plot
 facteur_echelle = 1e3;
 
 axes(1) = subplot(2,1,1);
@@ -39,21 +39,21 @@ clear; close all; clc;
 % 2)
 n = -5:5;
 delta = delta(n+1);
-stem(n, delta);
-xticks(n);
+stem(n, delta, 'filled');
+xticks(n); % afficher tous les nombres de l'axe x
 xlabel('n');
 title('Signaux discrets');
 
 % 3)
 hold on;
 u = cumsum(delta);
-stem(n, u, 'r', 'filled');
+stem(n + 0.1, u, 'r', 'filled');
 
 % 4)
 hold on;
 r = cumsum(u);
 r = [0 r(1, 1:length(r)-1)]; % Decalage a droite et supprimer le dernier element
-stem(n, r, 'g');
+stem(n - 0.1, r, 'g', 'filled');
 legend('\delta[n+1]', 'u[n+1]', 'r[n+1]');
 
 
