@@ -38,22 +38,23 @@ clear; close all; clc;
 
 % 2)
 n = -5:5;
-delta = delta(n+1);
-stem(n, delta, 'filled');
+deltaVal = delta(n+1);
+stem(n, deltaVal, 'filled');
 xticks(n); % afficher tous les nombres de l'axe x
 xlabel('n');
 title('Signaux discrets');
 
 % 3)
 hold on;
-u = cumsum(delta);
+u = cumsum(deltaVal);
 stem(n + 0.1, u, 'r', 'filled');
 
 % 4)
 hold on;
 r = cumsum(u);
-r = [0 r(1, 1:length(r)-1)]; % Decalage a droite et supprimer le dernier element
-stem(n - 0.1, r, 'g', 'filled');
+%r = [0 r(1, 1:length(r)-1)]; % Decalage a droite et supprimer le dernier element
+r = cumsum(cumsum(delta(n+1 - 1))) % Decalage a droite de l'impulsion
+stem(n - 0.1 , r, 'g', 'filled');
 legend('\delta[n+1]', 'u[n+1]', 'r[n+1]');
 
 
@@ -73,10 +74,11 @@ plot(t, eval(u))
 %   valeur
 
 % 2)
-delta = diff(u);
+deltaVal = diff(u);
 hold on;
-plot(t, eval(delta));
-% La valeur pour t = 0.5 n'est pas présente sur le graphe. Elle est infinie
+plot(t, eval(deltaVal));
+% La valeur pour t = 0.5 n'est pas présente sur le graphe. Elle est a une
+% amplitude infinie pour le graphe
 
 % 3)
 r = int(u);
@@ -87,7 +89,7 @@ plot(t, eval(r));
 
 
 
-
+% ###### Manière de travailler en continu : syms puis eval
 
 
 
