@@ -11,7 +11,6 @@ x1 = 5*cos(2*pi*f*t);
 x2 = 4*exp(-t/tau).*cos(2*pi*f*t);
 
 %% Plot
-t_ms = t*1000;
 
 axes(1) = subplot(2,1,1);
 plot(t, x1, 'LineWidth', 1.5, 'Color','b');
