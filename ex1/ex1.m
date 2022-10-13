@@ -33,4 +33,9 @@ xlabel('t [ms]','FontSize', 24);
 linkaxes(axes, 'x')
 xlim([-0.5 1.5]);
 
+%% 3.2. Signaux discrets, fonction principale
+clear; close all; clc;
 
+n = -5:5;
+imp = delta(n);
+n;
