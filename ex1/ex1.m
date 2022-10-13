@@ -79,7 +79,7 @@ plot(t, eval(delta));
 % La valeur pour t = 0.5 n'est pas présente sur le graphe. Elle est infinie
 
 % 3)
-r = int(u)
+r = int(u);
 hold on;
 plot(t, eval(r));
 
