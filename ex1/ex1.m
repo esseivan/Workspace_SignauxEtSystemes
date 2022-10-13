@@ -47,11 +47,12 @@ title('Signaux discrets');
 % 3)
 hold on;
 u = cumsum(delta);
-stem(n, u, 'r');
+stem(n, u, 'r', 'filled');
 
 % 4)
 hold on;
 r = cumsum(u);
+r = [0 r(1, 1:length(r)-1)]; % Decalage a droite et supprimer le dernier element
 stem(n, r, 'g');
 legend('\delta[n+1]', 'u[n+1]', 'r[n+1]');
 
