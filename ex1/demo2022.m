@@ -6,7 +6,9 @@ b = [2 3 4];
 
 c = b.*a;
 
-fe = 1e3;
+%% Exemple de signaux
+
+fe = 100e3;
 t = 0:1/fe:1;
 
 x=t.^2;
