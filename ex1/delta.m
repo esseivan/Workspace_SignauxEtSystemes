@@ -5,4 +5,11 @@ function out=delta(n)
 out = zeros(size(n)); % Construit out de la meme dimension de n
 out(n==0) = 1;
 
+% for i=1:length(n)
+%     if n(i) == 0
+%         out(i) = 1;
+%         break;
+%     end
+% end
+
 end
