@@ -51,7 +51,7 @@ stem(n + 0.1, u, 'r', 'filled');
 
 % 4)
 hold on;
-r = cumsum(u);
+%r = cumsum(u);
 %r = [0 r(1, 1:length(r)-1)]; % Decalage a droite et supprimer le dernier element
 r = cumsum(cumsum(delta(n+1 - 1))) % Decalage a droite de l'impulsion
 stem(n - 0.1 , r, 'g', 'filled');

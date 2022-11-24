@@ -18,15 +18,19 @@ x2 = A*exp(t*z) + A*exp(t*(z'));
 
 axes(1) = subplot(221);
 plot(t, real(x1));
+title("Re\{x1\}");
 
-axes(2) = subplot(222);
+axes(2) = subplot(223);
 plot(t, imag(x1));
+title("Im\{x1\}");
 
-axes(3) = subplot(223);
+axes(3) = subplot(222);
 plot(t, real(x2));
+title("Re\{x2\}");
 
 axes(4) = subplot(224);
 plot(t, imag(x2));
+title("Im\{x2\}");
 
 linkaxes(axes, 'x');
 xlim([0 30e-3]);
