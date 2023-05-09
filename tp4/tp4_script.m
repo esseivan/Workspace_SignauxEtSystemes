@@ -19,6 +19,7 @@ clear keep data;
 
 fs = 200e3;
 Ts = 1/fs;
+% Ts = mean(diff(t));
 % Chaque point est séparé de Ts secondes
 
 % Plot de x(t) et y(t)
@@ -54,29 +55,30 @@ ylabel("Amplitude en V");
 %% Calcul de la FFT
 clc;
 
-% H = fftshift(fft(h));
-H = fft(h);
+H = fftshift(fft(h));
+% H = fft(h);
 N = length(H);
 % La fft nous donne un résultat de 0 Hz à fs Hz
 % Nous prenons uniquement de 0 à fe/2
 
 % On prends de 0 à fe/2 (ou N/2)
-H = H(1: N/2+1);
-N2 = length(H);
+% H = H(1: N/2+1);
+% N2 = length(H);
 
-f = fs*(0:(N/2))'/N;
-
+% f = fs*(0:(N/2))'/N;
+f = -fs/2:fs/N:(fs/2-1);
 
 % Mise à 0 du bruit
 H(abs(H)<1e-3) = 0;
 
 % Valeur en dB, 20*log10(Y/X)
-H_db = 10*log10(abs(H));
+H_db = 20*log10(abs(H));
 
 % Affichage du diagrammde de Bode
 figure;
 hf2(1) = subplot(211);
 semilogx(f, H_db, 'b');
+grid("on");
 yline(0, '--');
 xline(0, '--');
 title("Diagramme de Bode de H", FontSize=14);
@@ -84,7 +86,7 @@ legend("|H(j\omega)|", FontSize=12);
 ylabel("Module"+newline+"dB", "FontWeight","bold", FontSize=12);
 
 hf2(2) = subplot(212);
-semilogx(angle(H), 'b');
+semilogx(f, angle(H), 'b');
 yline(0, '--');
 xline(0, '--');
 yline(pi, LineStyle=":");
@@ -97,3 +99,4 @@ xlabel("f, [f]=Hz", "FontWeight","bold", FontSize=12);
 % xlim([-fmax, fmax]*2);
 ylim([-pi, pi]*1.1);
 
+linkaxes(hf2, 'x');
